@@ -3,4 +3,6 @@ Just in case you are looking for a tool which could help you type LiKe ThIs, thi
 
 HTML file uses AngularJS.
 
-There is also an Python file available which does the same in Python CLI.
+There is also an Python file available which does the same in Python CLI.</br>
+<bold>Python Script Execution:</br></bold>
+<pre>python text.py texthere</pre>
