@@ -1,0 +1,70 @@
+<html>
+<head>
+    <!--
+        Developed by Danie Britto Kuthalane
+    -->
+    <title>TeXt GeNeRaToR</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta property="og:url" content="http://dannybritto.site/textgen"/>
+    <meta property="og:type" content="website"/>
+    <meta property="og:title" content="TeXt GeNeRaToR"/>
+    <meta property="og:description" content="Developed by Danie Britto Kuthalane"/>    
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">    
+    <script type="text/javascript">
+    function copyfunc(){
+        var copytext = document.getElementById("output_text");
+        copytext.select();
+        document.execCommand("Copy");
+        alert("Text copied");
+    }
+    </script>
+</head>
+<body>
+<div class="container" ng-app="myApp" ng-controller="formCtrl">
+    <div class="jumbotron">
+        <h1>TeXt GeNeRaToR</h1>
+        <p>YoU DoNt hAvE To hOlD ShIfT FoR EvErY AlTeRnAtE LeTtEr tO TyPe lIkE ThIs</p>
+    </div>
+    <form novalidate>
+    <div class="form-group">
+        <label for="input_text">Input Text</label>
+        <textarea id="input_text" class="form-control" ng-model="input_text"></textarea>
+    </div>
+    <div class="form-group">
+        <button type="button" ng-click="conv()" class="btn btn-default">Convert</button>
+    </div>
+    <div class="form-group">
+        <label for="output_text">Output Text</label>
+        <textarea id="output_text" class="form-control">{{output}}</textarea>
+    </div>
+    <div class="form-group">
+        <button type="button" onclick="copyfunc()" class="btn btn-default">Copy Text</button>
+    </div>
+    </form>
+<script type="text/javascript">
+    var app = angular.module('myApp', []);
+    app.controller('formCtrl', ['$scope', function($scope){
+        var opdata = [];
+        $scope.conv = function(){
+            var ipdata = $scope.input_text;
+            for (var i=0; i < ipdata.length; i++){
+                opdata[i] = ipdata.split('')[i];
+            }
+        var sample = opdata[2].toLowerCase();
+        for(var i=0; i<opdata.length; ++i){
+            if (i%2 == 0){
+                opdata[i] = opdata[i].toUpperCase();
+            }
+            else if (i%2 != 0){
+                opdata[i] = opdata[i].toLowerCase();
+            }
+        }
+        $scope.output = opdata.join("");    
+        };
+    }]);
+</script>
+</div>
+</body>
+</html>
